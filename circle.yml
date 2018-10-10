@@ -11,7 +11,7 @@ jobs:
           command: echo Deploying S3ContinuousDeploy.
       - run:
           name: Install python
-          command: sudo apt-get install python-dev
+          command: sudo apt-get update && apt-get install -y python-pip libpython-dev
       - run:
           name: Install awscli
           command: sudo pip install awscli
