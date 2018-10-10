@@ -28,3 +28,4 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               aws s3 sync /home/ubuntu/S3ContinuousDeploy s3://actoprohld --delete
             fi
+
