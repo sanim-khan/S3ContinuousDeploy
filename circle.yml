@@ -18,7 +18,10 @@ jobs:
                     aws --version
       - run:
           name: Install GitBook
-          command: sudo npm install -g gitbook-cli
+          command: |
+                    sudo npm install -g gitbook-cli
+                    gitbook build
+                    gitbook serve
       - deploy:
           name: Deploy to S3 if branch is Master.
           command: |
