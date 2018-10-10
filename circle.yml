@@ -15,8 +15,10 @@ jobs:
                     sudo apt-get update
                     sudo apt-get install -y python-pip python-dev
                     sudo pip install awscli
-                    npm install -g gitbook-cli
                     aws --version
+      - run:
+          name: Install GitBook
+          command: npm install -g gitbook-cli
       - deploy:
           name: Deploy to S3 if branch is Master.
           command: |
