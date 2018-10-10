@@ -11,7 +11,7 @@ jobs:
           command: echo Deploying S3ContinuousDeploy.
       - run:
           name: Install awscli
-          command: sudo pip install awscli
+          command: pip install awscli
       - deploy:
           name: Deploy to S3 if branch is Master.
           command: |
