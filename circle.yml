@@ -1,8 +1,20 @@
-dependencies:
-    override:
-        - sudo pip install awscli
-deployment:
-  prod:
-    branch: master
-    commands:
-        - aws s3 sync /home/ubuntu/S3ContinuousDeploy s3://actoprohld --delete
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8.11.2
+    steps:
+      - checkout
+      - run:
+          name: Deploying S3ContinuousDeploy.
+          command: echo Deploying S3ContinuousDeploy.
+      - run:
+          name: Installing dependencies.
+          command: sudo pip install awscli
+      - deploy:
+          name: Deploy to S3 if branch is Master.
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              aws s3 sync /home/ubuntu/S3ContinuousDeploy s3://actoprohld --delete
+            fi
