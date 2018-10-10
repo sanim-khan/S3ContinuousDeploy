@@ -10,11 +10,8 @@ jobs:
           name: Deploying S3ContinuousDeploy.
           command: echo Deploying S3ContinuousDeploy.
       - run:
-          name: Install python
-          command: sudo apt-get update && apt-get install -y python-pip libpython-dev
-      - run:
           name: Install awscli
-          command: sudo pip install awscli
+          command: sudo easy-install install awscli
       - deploy:
           name: Deploy to S3 if branch is Master.
           command: |
